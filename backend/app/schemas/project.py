@@ -34,8 +34,8 @@ class ProjectResponse(BaseModel):
 
     id: int
     name: str
-    system_name: str
-    level: int
+    system_name: Optional[str] = ""
+    level: Optional[int] = None
     phase: str
     assignee_id: Optional[int] = None
     assignee_name: Optional[str] = None
