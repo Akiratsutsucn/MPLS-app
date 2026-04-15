@@ -24,7 +24,7 @@ class ProjectUpdate(BaseModel):
 
 
 class PhaseUpdate(BaseModel):
-    phase: Literal["grading", "filing", "rectification", "evaluation", "supervision"]
+    phase: Literal["preparation", "self_assessment", "rectification", "formal_evaluation", "filing", "reporting"]
 
 
 class ProjectResponse(BaseModel):

@@ -13,8 +13,8 @@ class Project(Base):
     phase = Column(
         String(20),
         nullable=False,
-        default="grading",
-        comment="grading/filing/rectification/evaluation/supervision",
+        default="preparation",
+        comment="preparation/self_assessment/rectification/formal_evaluation/filing/reporting",
     )
     assignee_id = Column(Integer, ForeignKey("users.id"), nullable=True)
     client_org = Column(String(200), default="")

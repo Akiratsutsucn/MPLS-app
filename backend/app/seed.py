@@ -1,18 +1,18 @@
 from app.models.checklist import ChecklistItem
 
 DEFAULT_CHECKLIST: dict[str, list[str]] = {
-    "grading": [
+    "preparation": [
         "确定系统边界",
         "初步定级",
         "专家评审",
         "主管部门审核",
         "定级报告编写",
     ],
-    "filing": [
-        "准备备案材料",
-        "提交公安机关",
-        "备案审核",
-        "获取备案证明",
+    "self_assessment": [
+        "自测评方案编制",
+        "安全现状分析",
+        "差距分析",
+        "自测评报告编写",
     ],
     "rectification": [
         "安全方案设计",
@@ -20,16 +20,21 @@ DEFAULT_CHECKLIST: dict[str, list[str]] = {
         "安全策略配置",
         "整改验证测试",
     ],
-    "evaluation": [
+    "formal_evaluation": [
         "测评方案编制",
         "现场测评实施",
         "测评报告编写",
         "问题整改跟踪",
     ],
-    "supervision": [
-        "自查报告编写",
-        "配合监督检查",
-        "整改落实",
+    "filing": [
+        "准备备案材料",
+        "提交公安机关",
+        "备案审核",
+        "获取备案证明",
+    ],
+    "reporting": [
+        "汇总测评报告",
+        "编制整改报告",
         "归档总结",
     ],
 }

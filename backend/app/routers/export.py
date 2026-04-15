@@ -20,11 +20,12 @@ from app.seed import DEFAULT_CHECKLIST
 router = APIRouter(prefix="/projects", tags=["export"])
 
 PHASE_LABELS = {
-    "grading": "定级",
-    "filing": "备案",
+    "preparation": "准备",
+    "self_assessment": "自测评",
     "rectification": "整改",
-    "evaluation": "测评",
-    "supervision": "监督检查",
+    "formal_evaluation": "正式测评",
+    "filing": "备案",
+    "reporting": "报告编制",
 }
 
 
