@@ -18,6 +18,7 @@ class Project(Base):
     )
     assignee_id = Column(Integer, ForeignKey("users.id"), nullable=True)
     client_org = Column(String(200), default="")
+    start_date = Column(DateTime, nullable=True)
     deadline = Column(DateTime, nullable=True)
     notes = Column(Text, default="")
     created_by = Column(Integer, ForeignKey("users.id"), nullable=False)

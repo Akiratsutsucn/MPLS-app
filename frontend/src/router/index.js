@@ -6,6 +6,7 @@ const routes = [
   { path: '/register', component: () => import('../views/RegisterView.vue') },
   { path: '/', component: () => import('../views/KanbanView.vue'), meta: { requiresAuth: true } },
   { path: '/list', component: () => import('../views/ListView.vue'), meta: { requiresAuth: true } },
+  { path: '/gantt', component: () => import('../views/GanttView.vue'), meta: { requiresAuth: true } },
 ]
 
 const router = createRouter({

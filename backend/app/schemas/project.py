@@ -9,6 +9,7 @@ class ProjectCreate(BaseModel):
     level: int = Field(..., ge=1, le=5)
     assignee_id: Optional[int] = None
     client_org: Optional[str] = None
+    start_date: Optional[datetime] = None
     deadline: Optional[datetime] = None
     notes: Optional[str] = None
 
@@ -19,6 +20,7 @@ class ProjectUpdate(BaseModel):
     level: Optional[int] = Field(None, ge=1, le=5)
     assignee_id: Optional[int] = None
     client_org: Optional[str] = None
+    start_date: Optional[datetime] = None
     deadline: Optional[datetime] = None
     notes: Optional[str] = None
 
@@ -38,6 +40,7 @@ class ProjectResponse(BaseModel):
     assignee_id: Optional[int] = None
     assignee_name: Optional[str] = None
     client_org: Optional[str] = None
+    start_date: Optional[datetime] = None
     deadline: Optional[datetime] = None
     notes: Optional[str] = None
     created_by: int

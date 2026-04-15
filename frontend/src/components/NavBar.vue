@@ -19,6 +19,10 @@
           <el-icon><List /></el-icon>
           列表
         </el-radio-button>
+        <el-radio-button value="/gantt">
+          <el-icon><DataLine /></el-icon>
+          甘特图
+        </el-radio-button>
       </el-radio-group>
     </div>
 
@@ -72,7 +76,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
-import { Grid, List, Plus, Bell, ArrowDown, SwitchButton } from '@element-plus/icons-vue'
+import { Grid, List, DataLine, Plus, Bell, ArrowDown, SwitchButton } from '@element-plus/icons-vue'
 import { useAuthStore } from '../stores/auth.js'
 import { getUpcoming } from '../api/dashboard.js'
 

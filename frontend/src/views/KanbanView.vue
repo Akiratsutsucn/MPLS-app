@@ -52,6 +52,15 @@
         <el-form-item label="客户单位">
           <el-input v-model="form.client_org" placeholder="请输入客户单位" />
         </el-form-item>
+        <el-form-item label="开始日期">
+          <el-date-picker
+            v-model="form.start_date"
+            type="date"
+            placeholder="请选择开始日期"
+            style="width: 100%"
+            value-format="YYYY-MM-DD"
+          />
+        </el-form-item>
         <el-form-item label="截止日期" prop="deadline">
           <el-date-picker
             v-model="form.deadline"
@@ -104,6 +113,7 @@ const form = ref({
   system_name: '',
   level: null,
   client_org: '',
+  start_date: '',
   deadline: '',
   notes: '',
 })
@@ -151,7 +161,7 @@ async function submitCreate() {
   try {
     await projectsStore.createProject({ ...form.value })
     showCreateDialog.value = false
-    form.value = { name: '', system_name: '', level: null, client_org: '', deadline: '', notes: '' }
+    form.value = { name: '', system_name: '', level: null, client_org: '', start_date: '', deadline: '', notes: '' }
     ElMessage.success('项目创建成功')
   } catch {
     ElMessage.error('创建失败，请重试')

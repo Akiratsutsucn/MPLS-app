@@ -12,6 +12,7 @@
         </el-descriptions-item>
         <el-descriptions-item label="负责人">{{ project.assignee_name || '—' }}</el-descriptions-item>
         <el-descriptions-item label="客户单位">{{ project.client_org || '—' }}</el-descriptions-item>
+        <el-descriptions-item label="开始日期">{{ project.start_date ? new Date(project.start_date).toLocaleDateString('zh-CN') : '—' }}</el-descriptions-item>
         <el-descriptions-item label="截止日期">{{ project.deadline ? new Date(project.deadline).toLocaleDateString('zh-CN') : '—' }}</el-descriptions-item>
       </el-descriptions>
 

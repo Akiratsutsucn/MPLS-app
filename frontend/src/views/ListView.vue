@@ -74,6 +74,9 @@
         <el-form-item label="客户单位">
           <el-input v-model="form.client_org" placeholder="请输入客户单位" />
         </el-form-item>
+        <el-form-item label="开始日期">
+          <el-date-picker v-model="form.start_date" type="date" placeholder="请选择" style="width: 100%" value-format="YYYY-MM-DD" />
+        </el-form-item>
         <el-form-item label="截止日期">
           <el-date-picker v-model="form.deadline" type="date" placeholder="请选择" style="width: 100%" value-format="YYYY-MM-DD" />
         </el-form-item>
@@ -115,7 +118,7 @@ const submitting = ref(false)
 const formRef = ref(null)
 const detailProject = ref(null)
 
-const form = ref({ name: '', system_name: '', level: null, client_org: '', deadline: '', notes: '' })
+const form = ref({ name: '', system_name: '', level: null, client_org: '', start_date: '', deadline: '', notes: '' })
 const rules = {
   name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
   system_name: [{ required: true, message: '请输入系统名称', trigger: 'blur' }],
@@ -159,7 +162,7 @@ async function submitCreate() {
   try {
     await projectsStore.createProject({ ...form.value })
     showCreateDialog.value = false
-    form.value = { name: '', system_name: '', level: null, client_org: '', deadline: '', notes: '' }
+    form.value = { name: '', system_name: '', level: null, client_org: '', start_date: '', deadline: '', notes: '' }
     ElMessage.success('项目创建成功')
   } catch { ElMessage.error('创建失败') } finally { submitting.value = false }
 }
