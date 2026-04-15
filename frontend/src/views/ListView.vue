@@ -63,16 +63,10 @@
         <el-form-item label="项目名称" prop="name">
           <el-input v-model="form.name" placeholder="请输入项目名称" />
         </el-form-item>
-        <el-form-item label="系统名称" prop="system_name">
-          <el-input v-model="form.system_name" placeholder="请输入系统名称" />
-        </el-form-item>
-        <el-form-item label="等保等级" prop="level">
-          <el-select v-model="form.level" placeholder="请选择" style="width: 100%">
-            <el-option v-for="(label, val) in LEVELS" :key="val" :label="label" :value="Number(val)" />
+        <el-form-item label="负责人">
+          <el-select v-model="form.assignee_id" placeholder="请选择负责人" clearable style="width: 100%">
+            <el-option v-for="u in users" :key="u.id" :label="u.name" :value="u.id" />
           </el-select>
-        </el-form-item>
-        <el-form-item label="客户单位">
-          <el-input v-model="form.client_org" placeholder="请输入客户单位" />
         </el-form-item>
         <el-form-item label="开始日期">
           <el-date-picker v-model="form.start_date" type="date" placeholder="请选择" style="width: 100%" value-format="YYYY-MM-DD" />
@@ -107,6 +101,7 @@ import NavBar from '../components/NavBar.vue'
 import ProjectDetail from '../components/ProjectDetail.vue'
 import { PHASES, LEVELS, PHASE_MAP } from '../utils/constants.js'
 import { useProjectsStore } from '../stores/projects.js'
+import { getUsers } from '../api/auth.js'
 
 const projectsStore = useProjectsStore()
 
@@ -117,12 +112,11 @@ const showCreateDialog = ref(false)
 const submitting = ref(false)
 const formRef = ref(null)
 const detailProject = ref(null)
+const users = ref([])
 
-const form = ref({ name: '', system_name: '', level: null, client_org: '', start_date: '', deadline: '', notes: '' })
+const form = ref({ name: '', assignee_id: null, start_date: '', deadline: '', notes: '' })
 const rules = {
   name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
-  system_name: [{ required: true, message: '请输入系统名称', trigger: 'blur' }],
-  level: [{ required: true, message: '请选择等保等级', trigger: 'change' }],
 }
 
 const filteredProjects = computed(() => {
@@ -162,12 +156,15 @@ async function submitCreate() {
   try {
     await projectsStore.createProject({ ...form.value })
     showCreateDialog.value = false
-    form.value = { name: '', system_name: '', level: null, client_org: '', start_date: '', deadline: '', notes: '' }
+    form.value = { name: '', assignee_id: null, start_date: '', deadline: '', notes: '' }
     ElMessage.success('项目创建成功')
   } catch { ElMessage.error('创建失败') } finally { submitting.value = false }
 }
 
-onMounted(() => projectsStore.fetchProjects())
+onMounted(async () => {
+  projectsStore.fetchProjects()
+  try { users.value = (await getUsers()).data } catch {}
+})
 </script>
 
 <style scoped>

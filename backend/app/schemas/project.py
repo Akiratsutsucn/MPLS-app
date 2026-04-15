@@ -5,8 +5,8 @@ from typing import Optional, Literal, List
 
 class ProjectCreate(BaseModel):
     name: str
-    system_name: str
-    level: int = Field(..., ge=1, le=5)
+    system_name: Optional[str] = ""
+    level: Optional[int] = Field(None, ge=1, le=5)
     assignee_id: Optional[int] = None
     client_org: Optional[str] = None
     start_date: Optional[datetime] = None

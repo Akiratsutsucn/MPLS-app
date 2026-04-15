@@ -85,7 +85,7 @@ async def create_project(
 ):
     project = Project(
         name=payload.name,
-        system_name=payload.system_name,
+        system_name=payload.system_name or "",
         level=payload.level,
         assignee_id=payload.assignee_id,
         client_org=payload.client_org or "",

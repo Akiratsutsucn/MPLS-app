@@ -8,8 +8,8 @@ class Project(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(200), nullable=False)
-    system_name = Column(String(200), nullable=False)
-    level = Column(Integer, nullable=False, comment="等保等级 1-5")
+    system_name = Column(String(200), nullable=False, default="")
+    level = Column(Integer, nullable=True, comment="等保等级 1-5")
     phase = Column(
         String(20),
         nullable=False,
